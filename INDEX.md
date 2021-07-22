@@ -13,7 +13,7 @@ permalink: index.html
 
 ### - Remarkably Easy
 
-We want DeadSFU to be super easy to use. We go to great lengths to achieve this. Let us know how we are doing.
+We want DeadSFU to be super easy to use. We've gone great lengths to achieve this.
 
 ### - Massively Scalable
 
