@@ -6,7 +6,7 @@ permalink: index.html
 # Dead-simple WebRTC broadcasting.<br>From OBS, the browser, or your app.<br>Cloud-native and scalable.
 
 
- <p class="meta">A Millicast alternative in <a href="https://github.com/x186k/deadsfu">100% MIT Open Source</a></p>
+**DeadSFU** is <a href="https://github.com/x186k/deadsfu">100% MIT Open Source</a>
 
 ### [OBS-input Tutorial](/README/)&nbsp;&nbsp;[Browser-input Tutorial](/README/)
 
