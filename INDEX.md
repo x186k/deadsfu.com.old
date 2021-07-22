@@ -8,7 +8,7 @@ permalink: index.html
 
 **DeadSFU** is <a href="https://github.com/x186k/deadsfu">100% MIT Open Source</a>
 
-### [OBS-input Tutorial](/README/)&nbsp;&nbsp;[Browser-input Tutorial](/README/)
+### [Browser-input Tutorial](/README/)
 
 
 ### - Remarkably Easy
