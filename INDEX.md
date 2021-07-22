@@ -3,54 +3,34 @@ permalink: index.html
 ---
 
 
-# This is the _final_ motherfucking website.
+# Dead-simple WebRTC broadcasting.<br>From OBS, the browser, or your app.<br>Cloud-native and scalable.
 
-And it's _really_ more fucking perfect than the last guy's.
 
-## Seriously, some [minimal](/README/) fucking things are needed to make this shit perfect.
+ <p class="meta">A Millicast alternative in <a href="https://github.com/x186k/deadsfu">100% MIT Open Source</a></p>
 
-**Ten fucking declarations, an `@media` block, and one attribute.**
+### [OBS-input Tutorial](/README/)&nbsp;&nbsp;[Browser-input Tutorial](/README/)
 
-That's how much CSS and HTML it took to turn that [grotesque pile of shit](http://motherfuckingwebsite.com/) into this finally perfect masterpiece. It's so fucking simple and it still has all the glory of the original perfect-ass website:
 
-* Shit's _finally_ lightweight and loads fast;
-* _Finally_ fits on all your shitty screens;
-* _Finally_ looks the same in all your shitty browsers;
-* _Won't_ bleach your fucking eyeballs at night if your browser thinks you like dark things;
-* The motherfucker's _still_ accessible to every asshole that visits your site;
-* Shit's _still_ legible and gets your fucking point across.
+### - Remarkably Easy
 
-### And guess what, motherfucker:
+We want DeadSFU to be super easy to use. We go to great lengths to achieve this. Let us know how we are doing.
 
-You never knew it, but it's easy to improve reliability on your site. Here's how.
+### - Massively Scalable
 
-## A little more accessibility
+DeadSFU has been designed from the ground-up to be multi-server scalable, and for implementation to also be as easy as possible.
 
-I know you love marginalization, but you should take care of people.
-The <abbr title="HyperText Markup Language">HTML</abbr> tag doesn't include the [`lang` attribute](https://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes) in your shitty webpage.  
-You ever listen to a [wrong language screen reader lecture](https://www.youtube.com/watch?v=NP94u7y_KkQ)? What a shitty experience.
+### - Broadcasting Ready
 
-## Typography matters
+Real-time audio, video broadcasting is a sweet-spot for DeadSFU. You can create multi-server broadcasting systems with a few Docker instances. Auto-scaling systems are possible too.
 
-[Don't be dumb with typography](http://smartquotesforsmartpeople.com/). Don't let improper marks and quotes make their way onto websites because of dumb defaults in applications and CMSs.  
-And did you let the browser choose the font? Don't make me read such text with _Times New Roman_.
+### - Cloud Native
 
-## License, motherfucker
+We encourage using DeadSFU with Docker, because it’s a great way to build multi-server systems. Of course you can use binaries or build from source if you prefer.
 
-Do you revendicate intellectual property? No. So you must [choose a fucking public license](https://choosealicense.com/).  
-And as you'll never be perfect, let others [improve your shit](https://github.com/LeoColomb/perfectmotherfuckingwebsite) or [do what the fuck they want to](https://github.com/LeoColomb/perfectmotherfuckingwebsite/blob/master/LICENSE).
+### - No Coding Necessary
 
-## Yes, this is the last fucking satire, you fuck
+An HTTP server and a simple HTML/JS broadcast and watch application is built in. You can turn this off if you decide to use your own HTML/JS.
 
-I'm impressed about what the creator of [this site's inspiration did](http://bettermotherfuckingwebsite.com/). What I'm saying is that it's so, so simple to make sites easier to read. Websites are broken by default—they are functional, high-performing, and accessible, but they're also fucking ugly. You and all the other web designers out there need to make them not total shit.
+### - Simulcast and Multi-track Switching
 
-> "Don't ignore stupid things or you will stay at the motherfucker level." 
-> — Brad Hollande
-
----
-
-## Epilogue
-
-Inspired by the geniuses behind [motherfuckingwebsite.com](https://motherfuckingwebsite.com/) and [bettermotherfuckingwebsite.com](http://bettermotherfuckingwebsite.com/).
-
-This page—that isn't a total fucking content—was licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+DeadSFU supports hundreds video input tracks and a single audio track on publisher ingress. Subscribers can receive a single video track and ask the SFU to switch between sources, or subscribers can receive the full bundle of audio and video tracks.
