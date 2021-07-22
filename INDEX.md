@@ -10,6 +10,8 @@ permalink: index.html
 
 ### [Browser-input Tutorial](/README/)
 
+<br>
+## Features
 
 ### - Remarkably Easy
 
