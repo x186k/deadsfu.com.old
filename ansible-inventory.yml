@@ -1,0 +1,9 @@
+
+deadsfucom ansible_user=root ansible_host=165.227.51.131
+
+
+
+# [influx]
+# host1
+# host2
+

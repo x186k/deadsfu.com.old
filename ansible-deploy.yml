@@ -1,0 +1,84 @@
+
+# sudo lsof -i :53
+
+- hosts: deadsfucom
+  become: yes
+  become_user: root
+  gather_facts: false
+  handlers:
+    - name: restart ddns
+      systemd: name=ddns5 state=restarted enabled=yes
+      listen: "restart-ddns"
+
+     
+  tasks:
+      # vars:
+      #   ansible_python_interpreter: /usr/bin/python3
+
+
+    - name: ufw 80
+      ufw: rule=allow port=80 proto=tcp
+    - name: ufw 443
+      ufw: rule=allow port=443 proto=tcp
+    - name: ufw 2375
+      ufw: rule=deny port=2375 proto=any
+    - name: ufw 2376
+      ufw: rule=deny port=2376 proto=tcp
+
+
+    - name: install pip3
+      apt: name=python3-pip state=present  update_cache=yes
+             
+
+    - name: Install pip docker
+      pip:
+        name: docker
+
+    - name: copy Caddyfile
+      ansible.builtin.copy:
+        src: Caddyfile
+        dest: /root/
+        owner: root
+        group: root
+        mode: '0555'
+      register: newcaddyfile
+
+
+    - name: Creates directory
+      file:
+        path: /root/public
+        state: directory
+    - name: copy hugo output up
+      ansible.posix.synchronize:
+        src: public/
+        dest: /root/public
+
+
+
+    - name: caddy docker container
+      docker_container:
+        working_dir: /root
+        state: started
+        container_default_behavior: no_defaults
+        name: caddy
+        image: caddy:2.4.3
+        restart_policy: always
+#        recreate: yes
+        ports:
+          - "80:80/tcp"
+          - "443:443/tcp"
+        volumes: 
+          - /root/Caddyfile:/etc/caddy/Caddyfile
+          - /root/public:/root/public
+
+
+
+    
+
+
+
+     
+
+
+
+
