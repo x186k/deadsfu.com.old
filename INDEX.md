@@ -1,38 +1,166 @@
----
-permalink: index.html
----
+ 
 
 
-# Dead-simple WebRTC broadcasting.<br>From OBS, the browser, or your app.<br>Cloud-native and scalable.
+
+ <!-- model:  https://github.com/typesense/typesense -->
 
 
-**DeadSFU** is <a href="https://github.com/x186k/deadsfu">100% MIT Open Source</a>
+## Dead-simple WebRTC broadcasting.<br>From OBS, the browser, or your app.<br>Cloud-native and scalable. <!-- omit in toc -->
 
-### [Browser-input Tutorial](/README/)
 
-<br>
-## Features
+**DeadSFU** is MIT Open Source.xxx <a href="https://github.com/x186k/deadsfu">Github</a>
 
-### - Remarkably Easy
+<!-- ### [Browser-input Tutorial](/README/) -->
 
-We want DeadSFU to be super easy to use. We've gone great lengths to achieve this.
+<a href="https://join.slack.com/t/deadsfu/shared_invite/zt-sv23oa10-XFFYoJHPty8BtuCmBthH_A" rel="nofollow">
+<img src="https://img.shields.io/badge/slack%20community-join-d90368" data-canonical-src="https://img.shields.io/badge/slack%20community-join-d90368" style="max-width:100%;"></a>
 
-### - Massively Scalable
 
-DeadSFU has been designed from the ground-up to be multi-server scalable, and for implementation to also be as easy as possible.
+## Quick Links  <!-- omit in toc -->
 
-### - Broadcasting Ready
+- [Feature List](#feature-list)
+- [Install](#install)
+- [Quick Start: Browser-input Streaming](#quick-start-browser-input-streaming)
+- [Tutorial: Browser-input Streaming](#tutorial-browser-input-streaming)
+- [Getting Support](#getting-support)
+- [Contributing](#contributing)
+- [Getting Latest Updates](#getting-latest-updates)
+- [Compile From Source](#compile-from-source)
 
-Real-time audio, video broadcasting is a sweet-spot for DeadSFU. You can create multi-server broadcasting systems with a few Docker instances. Auto-scaling systems are possible too.
+<!--
+todo, see also typesense
+## Benchmarks
+## Who's using this
+## API Documentation
+## API Clients
+-->
 
-### - Cloud Native
+## Feature List
 
-We encourage using DeadSFU with Docker, because it’s a great way to build multi-server systems. Of course you can use binaries or build from source if you prefer.
+- **Dead-Simple Usage:** Meticulously crafted for ease-of-use, scalability, and performance.
+- **Large Scale WebRTC Broadcasting:** SFUs can be easily cascaded to create clusters of hundreds of servers.
+- **Cloud Native Docker:** Ready to go Docker images for cloud-native broadcasting clusters.
+- **Auto Scaling Compatible:** HTTPS signalling is compatible with most cluster-autoscaling methods.
+- **OBS Broadcasting:** Send from OBS to DeadSFU for doing WebRTC broadcasting.
+- **Browser Broadcasting:** Simple HTML console for doing WebRTC broadcasting.
+- **Browser Viewer:** Browser viewer enables watching broadcasts.
+- **FTL Ingress:** Add an FTL:// URL to the args, and FTL will be the chosen ingress protocol.
+- **RTP Ingress:** Add an RTP:// URL to the args, and RTP will be the chosen ingress protocol. (todo)
+- **Firewall Ready Check:** When using a public IP address, the SFU checks if the ports is open.
+- **Zero-conf Inside-firewall Use:** Auto-local IP addr detection, DNS registration and HTTPS setup for one-liner SFU setup.
+- **Zero-conf Outside-firewall Use:** Auto-public IP addr detection, DNS registration and HTTPS setup for one-liner SFU setup.
+- **Simple Ingress HTTPS Signalling:** WISH compatible: Send an Offer-SDP, get an Answer-SDP, and you're publishing!
+- **Zero-conf HTTPS Certificates:** Just like Caddy, HTTPS certificates are auto-aquired. No firewall holes, thanks to DNS challenge.
+- **Simple Egress HTTPS Signalling:** WISH-like: Send an Offer-SDP, get an Answer-SDP, and you're receiving!
+- **Multi Video Track Forwarding:** Ingress and egress of dozens or hundreds of input video tracks.
+- **Selectable Video Switching:** Receivers getting one video-track can switch to any ingress-track into SFU.
+- **Standard WebRTC Simulcast:** WebRTC simulcast ingress means SFU ingress takes 3x track-levels from browser.
+- **Designed For Fault Tolerance:** Single-peer-ingress design for practical large-scale fault-tolerant containerized broadcasting.
+- **Kubernetes capable:** Designed for Kubernetes broadcasting clusters.
+- **HTTPS load balancer compatible:** Designed standard HTTPS load balancer compatibility on egress.
+- **Dead-simple Install:** Use a one-liner curl & untar command to prepare to broadcast.
+- **No Runtime Dependencies:** DeadSFU is a single binary that you can run locally or in production with a single command.
 
-### - No Coding Necessary
+**Don't see a feature on this list?** Check the issue track to see if your feature is there, if not open a new issue. We use user input to make our roadmap, and we'd love to hear from you.
+<!--
+- **⚡ Blazing Fast:** Built in C++. Meticulously architected from the ground-up for low-latency (<50ms) instant searches.
+- **⚡ Kubernetes Fast:** Built in C++. Meticulously architected from the ground-up for low-latency (<50ms) instant searches.
+-->
 
-An HTTP server and a simple HTML/JS broadcast and watch application is built in. You can turn this off if you decide to use your own HTML/JS.
+## Install
 
-### - Simulcast and Multi-track Switching
+Linux Intel/AMD64
+```bash
+curl -sL https://github.com/x186k/deadsfu/releases/latest/download/deadsfu-linux-amd64.tar.gz | tar xvz
+```
+Linux ARM64
+```bash
+curl -sL https://github.com/x186k/deadsfu/releases/latest/download/deadsfu-linux-arm64.tar.gz | tar xvz
+```
+macOS Intel CPU
+```bash
+curl -sL https://github.com/x186k/deadsfu/releases/latest/download/deadsfu-darwin-amd64.tar.gz | tar xvz
+```
+macOS Apple CPU
+```bash
+curl -sL https://github.com/x186k/deadsfu/releases/latest/download/deadsfu-darwin-arm64.tar.gz | tar xvz
+```
+Docker Pull
+```bash
+docker pull x186k/deadsfu
+```
+Windows
+```bash
+curl  https://github.com/x186k/deadsfu/releases/latest/download/deadsfu-windows-amd64.zip -sLo tmp && tar -xvf tmp && del tmp
+```
 
-DeadSFU supports hundreds video input tracks and a single audio track on publisher ingress. Subscribers can receive a single video track and ask the SFU to switch between sources, or subscribers can receive the full bundle of audio and video tracks.
+## Quick Start: Browser-input Streaming
+
+Linux/macOS
+```bash
+./deadsfu https://tom42.ddns5.com:8443   # change tom42 to something else
+```
+Windows
+```
+rem change tom42 to something else
+.\\deadsfu.exe https://tom42.ddns5.com:8443
+```
+Docker
+```bash
+# change tom42 to something else
+docker run --network host x186k/deadsfu /app/main https://tom42.ddns5.com:8443
+```
+
+<!-- ## Quick Start: OBS Streaming -->
+
+## Tutorial: Browser-input Streaming
+
+Tutorial on the documentation site: [https://deadsfu.com/docs/tutorials/browser-input-streaming]
+
+<!-- ## Tutorial: OBS-in Streaming -->
+
+<!-- ## FAQ -->
+
+## Getting Support
+
+Author's email is `cameron@cameronelliott.com`
+
+Slack link: [Slack Invite Link](https://join.slack.com/t/deadsfu/shared_invite/zt-sv23oa10-XFFYoJHPty8BtuCmBthH_A)
+
+## Contributing
+
+If you have suggestions or ideas, please submit an issue or create a discussion. Your ideas are wanted!
+
+## Getting Latest Updates
+
+You can update by simply re-running the `curl` and `tar` commands again as in the install directions.
+
+## Compile From Source
+
+There are two repos you need to compile from source: `deadsfu` and `deadsfu-binaries`.
+`deadsfu-binaries` must be nested inside `deadsfu` when compiling.
+
+You need a version of Go greater than 1.16, we recommend 1.16.5 or later.
+
+Clone the main repo:
+```bash
+git clone https://github.com/x186k/deadsfu.git
+```
+Change dir:
+```bash
+cd deadsfu
+```
+
+Clone the binaries repo:
+```bash
+git clone https://github.com/x186k/deadsfu-binaries.git
+```
+
+Build with Go:
+```bash
+go build .
+```
+
+
+
+
