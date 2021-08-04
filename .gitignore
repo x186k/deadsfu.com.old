@@ -8,4 +8,7 @@ INDEX.md
 
 
 # movies, etc
-binaries
+# binaries
+
+*.mp4
+*.png
