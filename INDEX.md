@@ -21,6 +21,7 @@
 
 ## Quick Links  <!-- omit in toc -->
 
+- [Videos](#videos)
 - [Feature List](#feature-list)
 - [Install](#install)
 - [Quick Start: Browser-input Streaming](#quick-start-browser-input-streaming)
@@ -38,6 +39,13 @@ todo, see also typesense
 ## API Documentation
 ## API Clients
 -->
+
+## Videos
+
+- [Video Tour][v1]: Launch Digital Ocean VM, Download, Run, Browser-send, Browser-receive, change 3x simulcast channels
+
+
+[v1]: /binaries/video1.mp4
 
 ## Feature List
 
