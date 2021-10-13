@@ -7,7 +7,7 @@
 ### Q4 2021 <!-- omit in toc -->
 
 
-- [What You'll Learn](#what-youll-learn)
+- [What You Will Learn](#what-youll-learn)
 - [Thanks](#thanks)
 - [Create Azure Account](#create-azure-account)
 - [Stopping Instances and Costs](#stopping-instances-and-costs)
@@ -27,7 +27,7 @@
 - [Boring: Legal Waiver and Release](#boring-legal-waiver-and-release)
 
 
-### What You'll Learn
+### What You Will Learn
 
 This tutorial will take you through starting an Azure container running DeadSFU
 which will allow you to do low-latency OBS streaming (using FTL).
