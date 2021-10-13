@@ -5,10 +5,7 @@
   become: yes
   become_user: root
   gather_facts: false
-  handlers:
-    - name: restart ddns
-      systemd: name=ddns5 state=restarted enabled=yes
-      listen: "restart-ddns"
+
 
      
   tasks:
@@ -46,11 +43,11 @@
 
     - name: Creates directory
       file:
-        path: /root/public
+        path: _site
         state: directory
-    - name: copy hugo output up
+    - name: copy jekyll output up
       ansible.posix.synchronize:
-        src: public/
+        src: _site/
         dest: /root/public
 
 
