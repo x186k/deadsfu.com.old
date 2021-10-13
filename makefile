@@ -1,26 +1,28 @@
 
 
 # no
-# X=root@165.227.51.131
+# X=root@143.198.138.184
 # we dont use vars so cut and paste to shell works better
 
 all: deploy
 
-serve:
-	docker run --rm -it -v $(CURDIR):/srv/jekyll -p 4000:4000 -p 35729:35729 jekyll/builder:4.2.0 jekyll serve --livereload
+ansible:
+	ansible-playbook -i ansible-inventory.yml ansible-deploy.yml
 
+serve:
+	gojekyll server
 
 restart:
-	ssh root@165.227.51.131 docker restart caddy
+	ssh root@143.198.138.184 docker restart caddy
 	
 deploy:
 	rm -rf _site
-	docker run --rm -it -v $(CURDIR):/srv/jekyll jekyll/builder:4.2.0 jekyll build
-	ssh root@165.227.51.131 mkdir -p /root/public
-	rsync -ar --del _site/ root@165.227.51.131:/root/public
-	tar czf - --exclude xplaceholder . | ssh root@165.227.51.131 "cat > /root/public/deadsfu.com.tgz"
-	ssh root@165.227.51.131 ls -l /root/public/deadsfu.com.tgz
-	cp index.md ../deadsfu/README.md
+	gojekyll build
+	ssh root@143.198.138.184 mkdir -p /root/public
+	rsync -ar --del _site/ root@143.198.138.184:/root/public
+	tar czf - --exclude xplaceholder . | ssh root@143.198.138.184 "cat > /root/public/deadsfu.com.tgz"
+	ssh root@143.198.138.184 ls -l /root/public/deadsfu.com.tgz
+
 
 # update the deadsfu repo by hand, and forget the fancy shit
 ## git --git-dir=../deadsfu/.git --work-tree=../deadsfu commit -m 'deadsfu.com update' README.md
@@ -36,8 +38,7 @@ deploy:
 
 
 
-ansible-setup:
-	ansible-playbook -i ansible-inventory.yml ansible-deploy.yml
+
 
 
 
