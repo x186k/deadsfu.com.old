@@ -8,8 +8,8 @@ headlines: |
 
 
 
-include:
-  - README.md
+# include:
+#   - readme.md
 
 # remote_theme: cameronelliott/brutal-cam
 
@@ -32,7 +32,7 @@ future: true
 # https://github.com/benbalter/jekyll-optional-front-matter
 
 plugins:
-  - jekyll-relative-links
+  #- jekyll-relative-links
   - jekyll-optional-front-matter
   # - jekyll-remote-theme
 
